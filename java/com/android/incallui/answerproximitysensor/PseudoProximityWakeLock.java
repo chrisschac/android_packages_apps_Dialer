@@ -72,7 +72,7 @@ public class PseudoProximityWakeLock implements AnswerProximityWakeLock, SensorE
 
   @Override
   public void onSensorChanged(SensorEvent sensorEvent) {
-    boolean near = sensorEvent.values[0] < sensorEvent.sensor.getMaximumRange();
+    boolean near = sensorEvent.values[0] <= 0L;
     LogUtil.i("AnswerProximitySensor.PseudoProximityWakeLock.onSensorChanged", "near: " + near);
     pseudoScreenState.setOn(!near);
     if (!near && listener != null) {
